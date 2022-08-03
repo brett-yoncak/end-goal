@@ -1,10 +1,32 @@
 <script setup>
 import { RouterView } from "vue-router";
+import { collection, addDoc } from 'firebase/firestore'
+import db from '@/firebase/init.js'
+
 </script>
 
 <template>
   <RouterView />
 </template>
 
-<style scoped>
+<style>
+html {
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+}
+
+body {
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  background-color: #1F1F1F;
+  overflow: hidden;
+}
+
+#app{
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 </style>
