@@ -24,11 +24,11 @@ const props = defineProps(
    </button>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 
 .clean-button {
    height: 80px;
-   width: auto;
+   width: 100%;
    border: none;
    border-radius: 80px;
    font-size: 20px

@@ -96,32 +96,14 @@ const register = () => {
 </template>
 
 <style lang="scss" scoped>
+@import '@/styles/global.scss';
+
 .grid {
-  display: grid;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  grid-template-areas:
-   'top'
-   'head'
-   'content'
-   'foot' 
-  ;
-  background: #404040;
-  border-radius: 24px;
-  height: 680px;
-  width: 640px;
-  grid-template-rows: 24px 64px 448px auto;
-  padding: 40px;
+   @include grid;
 }
 
 .heading {
-   grid-area: head;
-   font-size: 23px;
-   font-weight: bold;
-   color: white;
-   letter-spacing: 1px;
+   @include heading;
 }
 
 .content {
@@ -137,14 +119,7 @@ const register = () => {
 }
 
 .text-container {
-   color: white;
-   border: none;
-   height: 80px;
-   padding-left: 40px;
-   font-size: 23px;
-   background: #565656;
-   border-radius: 80px;
-   width: auto;
+   @include text-input-container;
 }
 
 .bottom-bar {
