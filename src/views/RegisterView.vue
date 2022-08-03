@@ -9,55 +9,80 @@ const auth = getAuth();
 
 let email = ref('')
 let password = ref('')
+let passwordCheck = ref('')
 
 const register = () => {
-   alert('Welcome!')
-   console.log(email.value)
-   console.log(password.value)
-   createUserWithEmailAndPassword(auth, email.value, password.value)
-      .then((userCredential) => {
-         const user = userCredential.user;
-         console.log(user)
-         console.log(store.loggedIn)
-         store.loggedIn = !!user
-         console.log(store.loggedIn)
-         router.replace({name: "new"})
-      })
-}
+   if(password.value != passwordCheck.value){
+      alert('Passwords MUST match. Try again.')
+      password.value = '' 
+      passwordCheck.value  = ''
+   }
 
+   else
+   createUserWithEmailAndPassword(auth, email.value, password.value)
+   .then((userCredential) => {
+      const user = userCredential.user;
+      store.loggedIn = !!user
+      router.replace({name: "new"})
+   })
+   .catch((error) => {
+      const errorCode = error.code
+      if(errorCode === 'auth/invalid-email'){
+         alert('Please enter a valid email address.')
+      }
+      else if(errorCode === 'auth/weak-password'){
+         alert('Your password should be at least 6 characters long.')
+      }
+      
+      email.value = ''
+      password.value = ''
+      passwordCheck.value = ''
+   })
+}
 </script>
 
 <template>
   <div class="grid">
     <header class="heading">
-      <h1>Create your account and start acheiving your goals!</h1>
+      <span>Create your account to get started! 💪</span>
     </header>
 
-    <main class="content">
-    <form @submit.prevent="register()" class="form">  
-      <input
-         type="text"
-         placeholder="Email"
-         class="text-container"
-         v-model="email"
-      />
+    <article class="content">
+      <form @submit.prevent="register()" class="form">  
+         <input
+            type="text"
+            placeholder="Email"
+            class="text-container"
+            v-model="email"
+         />
     
-      <input 
-         type="password"
-         placeholder="Password"
-         class="text-container"
-         v-model="password"
-      />
+         <input 
+            type="password"
+            placeholder="Password"
+            class="text-container"
+            v-model="password"
+         />
+
+         <input
+            type="password"
+            placeholder="Confirm Password"
+            class="text-container"
+            v-model="passwordCheck"
+         />
     
-      <CleanButton
-         type="submit" 
-         :text="`Let's go!`"
-         :background="`green`"
-      />
+         <CleanButton
+            type="submit" 
+            :text="`Let's go!`"
+            :background="`green`"
+         />
       </form>
-    </main>
+    </article>
+
     <div class="bottom-bar">
-      <router-link to="/login">
+      <router-link 
+      to="/login" 
+      style="text-decoration: none"
+      >
          <span class="reminder-text">
             Already have an account?
          </span>
@@ -73,49 +98,60 @@ const register = () => {
 <style lang="scss" scoped>
 .grid {
   display: grid;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   grid-template-areas:
-    'head'
-    'content'
-    'foot' 
+   'top'
+   'head'
+   'content'
+   'foot' 
   ;
   background: #404040;
   border-radius: 24px;
-  min-height: 80%;
-  min-width: 540px;
-  max-height: 800px;
-  max-width: 1000px;
-  grid-template-rows: 64px 1;
-  margin: 80px;
+  height: 680px;
+  width: 640px;
+  grid-template-rows: 24px 64px 448px auto;
   padding: 40px;
 }
 
 .heading {
    grid-area: head;
-   font-size: 10px;
+   font-size: 23px;
+   font-weight: bold;
    color: white;
+   letter-spacing: 1px;
 }
 
 .content {
    grid-area: content;
+   width: 100%;
 }
 
 .form {
    display: flex;
    flex-direction: column;
    row-gap: 8px;
+   width: 100%;
 }
 
 .text-container {
+   color: white;
    border: none;
    height: 80px;
    padding-left: 40px;
-   font-size: 16px;
+   font-size: 23px;
    background: #565656;
    border-radius: 80px;
+   width: auto;
 }
 
 .bottom-bar {
+   display: flex;
    grid-area: foot;
+   margin-top: auto;
+   padding-bottom: 20px;
 }
 
 .reminder-text {

@@ -14,7 +14,7 @@ html {
   height: 100%;
   padding: 0px;
   margin: 0px;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 body {
@@ -22,7 +22,7 @@ body {
   padding: 0px;
   margin: 0px;
   background-color: #1F1F1F;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 #app{

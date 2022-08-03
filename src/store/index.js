@@ -10,7 +10,7 @@ const store = createStore({
         archives: []
     }
   },
-  
+
   getters: {
 
   },

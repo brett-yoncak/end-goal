@@ -28,9 +28,10 @@ const props = defineProps(
 
 .clean-button {
    height: 80px;
+   width: auto;
    border: none;
    border-radius: 80px;
-   font-size: 18px
+   font-size: 20px
 }
 
 .green {
