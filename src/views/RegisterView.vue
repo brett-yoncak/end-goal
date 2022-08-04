@@ -2,8 +2,8 @@
 import { ref } from 'vue'
 import router from '@/router'
 import store from '@/store'
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
-import CleanButton from "@/components/CleanButton.vue"
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+import CleanButton from '@/components/CleanButton.vue'
 
 const auth = getAuth();
 
@@ -23,7 +23,7 @@ const register = () => {
    .then((userCredential) => {
       const user = userCredential.user;
       store.loggedIn = !!user
-      router.replace({name: "new"})
+      router.replace({name: 'new'})
    })
    .catch((error) => {
       const errorCode = error.code
@@ -48,48 +48,51 @@ const register = () => {
     </header>
 
     <article class="content">
-      <form @submit.prevent="register()" class="form">  
-         <input
-            type="text"
-            placeholder="Email"
-            class="text-container"
-            v-model="email"
-         />
+      <form
+        class="form"
+        @submit.prevent="register()"
+      >  
+        <input
+          v-model="email"
+          type="text"
+          placeholder="Email"
+          class="text-container"
+        >
     
-         <input 
-            type="password"
-            placeholder="Password"
-            class="text-container"
-            v-model="password"
-         />
+        <input 
+          v-model="password"
+          type="password"
+          placeholder="Password"
+          class="text-container"
+        >
 
-         <input
-            type="password"
-            placeholder="Confirm Password"
-            class="text-container"
-            v-model="passwordCheck"
-         />
+        <input
+          v-model="passwordCheck"
+          type="password"
+          placeholder="Confirm Password"
+          class="text-container"
+        >
     
-         <CleanButton
-            type="submit" 
-            :text="`Let's go!`"
-            :background="`green`"
-         />
+        <CleanButton
+          type="submit" 
+          :text="`Let's go!`"
+          :background="`green`"
+        />
       </form>
     </article>
 
     <div class="bottom-bar">
       <router-link 
-      to="/login" 
-      style="text-decoration: none"
+        to="/login" 
+        style="text-decoration: none"
       >
-         <span class="reminder-text">
-            Already have an account?
-         </span>
+        <span class="reminder-text">
+          Already have an account?
+        </span>
          
-         <span class="normal-text">
-            Click here to login.
-         </span>
+        <span class="normal-text">
+          Click here to login.
+        </span>
       </router-link>
     </div>
   </div>

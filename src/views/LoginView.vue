@@ -2,8 +2,8 @@
 import { ref } from 'vue'
 import router from '@/router'
 import store from '@/store'
-import { getAuth, signInWithEmailAndPassword} from "firebase/auth"
-import CleanButton from "@/components/CleanButton.vue"
+import { getAuth, signInWithEmailAndPassword} from 'firebase/auth'
+import CleanButton from '@/components/CleanButton.vue'
 
 const auth = getAuth();
 
@@ -24,7 +24,7 @@ const login = () => {
       
       else
       */
-      router.replace({name: "new"})
+      router.replace({name: 'new'})
    })
    
    .catch((error) => {
@@ -62,41 +62,44 @@ const login = () => {
     </header>
 
     <main class="content">
-      <form @submit.prevent="login()" class="form">  
-         <input
-            type="text"
-            placeholder="Email"
-            class="text-container"
-            v-model="email"
-         />
+      <form
+        class="form"
+        @submit.prevent="login()"
+      >  
+        <input
+          v-model="email"
+          type="text"
+          placeholder="Email"
+          class="text-container"
+        >
     
-         <input 
-            type="password"
-            placeholder="Password"
-            class="text-container"
-            v-model="password"
-         />
+        <input 
+          v-model="password"
+          type="password"
+          placeholder="Password"
+          class="text-container"
+        >
     
-         <CleanButton
-            type="submit" 
-            :text="`Login`"
-            :background="`green`"
-         />
+        <CleanButton
+          type="submit" 
+          :text="`Login`"
+          :background="`green`"
+        />
       </form>
     </main>
 
     <div class="bottom-bar">
       <router-link
-      to="/register"
-      style="text-decoration: none"
+        to="/register"
+        style="text-decoration: none"
       >
-         <span class="reminder-text">
-            Don't have an account?
-         </span>
+        <span class="reminder-text">
+          Don't have an account?
+        </span>
          
-         <span class="normal-text">
-            Click here to sign up.
-         </span>
+        <span class="normal-text">
+          Click here to sign up.
+        </span>
       </router-link>
     </div>
   </div>

@@ -1,6 +1,7 @@
 <template>
-<p 
-style="color: white"> 
-Placeholder "New Goal" 
-</p>
+  <p 
+    style="color: white"
+  > 
+    Placeholder "New Goal" 
+  </p>
 </template>

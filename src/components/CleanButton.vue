@@ -16,12 +16,12 @@ const props = defineProps(
 </script>
 
 <template>
-   <button 
-   class="clean-button" 
-   :class="background"
-   >
-   {{ text }}
-   </button>
+  <button 
+    class="clean-button" 
+    :class="background"
+  >
+    {{ text }}
+  </button>
 </template>
 
 <style lang="scss" scoped>

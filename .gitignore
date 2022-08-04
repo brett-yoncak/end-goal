@@ -7,3 +7,8 @@ yarn-error.log*
 
 node_modules
 *.local
+.vscode/*
+
+**/.*
+**/node_modules/**
+functions
