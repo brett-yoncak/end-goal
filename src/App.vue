@@ -1,8 +1,5 @@
 <script setup>
 import { RouterView } from "vue-router";
-import { collection, addDoc } from 'firebase/firestore'
-import db from '@/firebase/init.js'
-
 </script>
 
 <template>
